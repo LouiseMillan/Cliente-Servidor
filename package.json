@@ -1,0 +1,23 @@
+{
+  "name": "prisma_db",
+  "version": "1.0.0",
+  "description": "API: Express + DB(Prisma - Postgresql)",
+  "main": "index.js",
+  "scripts": {
+    "server": "node ./server.js",
+    "test": "node ./node_modules/jest/bin/jest",
+    "eslint": "node ./node_modules/eslint/bin/eslint.js .",
+    "eslint--fix": "node ./node_modules/eslint/bin/eslint.js . --fix"
+  },
+  "keywords": [],
+  "author": "Millán",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "prisma": "^3.14.0"
+  }
+}
