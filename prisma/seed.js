@@ -96,7 +96,7 @@ const prisma = new PrismaClient();
 
 (async function main(){
     try{
-        const mission1 = await prisma.mission.upsert({
+        await prisma.mission.upsert({
             where: { name: "Mission Node" },
             update: {},
             create: {
@@ -107,7 +107,7 @@ const prisma = new PrismaClient();
             }
         });
         
-        const mission2 = await prisma.mission.upsert({
+        await prisma.mission.upsert({
             where: { name: "Mission Java" },
             update: {},
             create: {
@@ -117,6 +117,47 @@ const prisma = new PrismaClient();
                 enrollments: 3167,
             }
         });
+
+        console.log("Create 2 missions");
+    }catch(e){
+        console.error(e);
+        process.exit(1);
+    }finally{
+        await prisma.$disconnect();
+    }
+})();
+
+
+(async function main(){
+    try{
+        await prisma.mission.upsert({
+            where: { id: 1 },
+            update: {
+                name: "Fernanda Ochoa",
+                username: "FerOchoa",
+                mainStack: "Java"
+            },
+            create: {
+                name: "Carlo Gilmar",
+                username: "CarloGil",
+                mainStack: "Java"
+            }
+        });
+
+        await prisma.mission.upsert({
+            where: { id: 1 },
+            update: {
+                name: "Fernanda Ochoa",
+                username: "FerOchoa",
+                mainStack: "Java"
+            },
+            create: {
+                name: "Fernanda Ochoa",
+                username: "FerOchoa",
+                mainStack: "Java"
+            }
+        });
+        
 
         console.log("Create 2 missions");
     }catch(e){

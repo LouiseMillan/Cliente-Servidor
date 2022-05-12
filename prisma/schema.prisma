@@ -38,4 +38,6 @@ model MissionCommander {
   mainStack String @db.VarChar(255)
   currentEnrollment Boolean @default(false)
   hasAzureCertification Boolean  @default(false)
+  dateCreated DateTime @default(now())
+  lastUpdated DateTime @updatedAt
 }
