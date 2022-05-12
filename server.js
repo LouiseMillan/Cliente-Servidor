@@ -1,6 +1,5 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
-const req = require("express/lib/request");
 
 const prisma = new PrismaClient();
 const app = express();
@@ -57,6 +56,61 @@ app.delete("/explorers/:id", async (request, response) => {
     const id = parseInt(request.params.id);
 
     await prisma.explorer.delete({
+        where: {
+            id: id
+        }
+    });
+
+    return response.json({message: "Eliminado correctamente."});
+});
+
+
+app.get("/missions", async (request, response) => {
+    const allMissions = await prisma.mission.findMany({});
+    response.json(allMissions);
+});
+
+app.get("/missions/:id", async (request, response) => {
+    const id = request.params.id;
+    const mission = await prisma.mission.findUnique({
+        where: {
+            id: parseInt(id)
+        }
+    });
+    response.json(mission);
+});
+
+app.post("/missions", async (request, response) => {
+    const mission = {
+        name: request.body.name, 
+        lang: request.body.lang,
+        missionCommander: request.body.missionCommander,
+        enrollments: parseInt(request.body.enrollments)
+    };
+
+    await prisma.mission.create({data: mission});
+    return response.json({message: "Mission creada."});
+});
+
+app.put("/missions/:id", async (request, response) => {
+    const id = parseInt(request.params.id);
+
+    await prisma.mission.update({
+        where:{
+            id: id
+        },
+        data: {
+            lang: request.body.lang
+        }
+    });
+
+    return response.json({message: "Actualizado correctamente."});
+});
+
+app.delete("/missions/:id", async (request, response) => {
+    const id = parseInt(request.params.id);
+
+    await prisma.mission.delete({
         where: {
             id: id
         }

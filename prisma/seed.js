@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 (async function main(){
     try{
-        const woopa = await prisma.explorer.upsert({
+        await prisma.explorer.upsert({
             where: { name: "Woopa" },
             update: {},
             create: {
@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
             }
         });
         
-        const woopa1 = await prisma.explorer.upsert({
+        await prisma.explorer.upsert({
             where: { name: "Woopa1" },
             update: {},
             create: {
@@ -23,7 +23,7 @@ const prisma = new PrismaClient();
             }
         });
         
-        const woopa2 = await prisma.explorer.upsert({
+        await prisma.explorer.upsert({
             where: { name: "Woopa2" },
             update: {},
             create: {
@@ -33,7 +33,7 @@ const prisma = new PrismaClient();
             }
         });
         
-        const woopa3 = await prisma.explorer.upsert({
+        await prisma.explorer.upsert({
             where: { name: "Woopa3" },
             update: {},
             create: {
@@ -44,7 +44,7 @@ const prisma = new PrismaClient();
         });
 
         
-        const woopa4 = await prisma.explorer.upsert({
+        await prisma.explorer.upsert({
             where: { name: "Woopa4" },
             update: {},
             create: {
@@ -54,7 +54,7 @@ const prisma = new PrismaClient();
             }
         });
         
-        const woopa5 = await prisma.explorer.upsert({
+        await prisma.explorer.upsert({
             where: { name: "Woopa5" },
             update: {},
             create: {
@@ -64,7 +64,7 @@ const prisma = new PrismaClient();
             }
         });
         
-        const woopa6 = await prisma.explorer.upsert({
+        await prisma.explorer.upsert({
             where: { name: "Woopa6" },
             update: {},
             create: {
@@ -74,7 +74,7 @@ const prisma = new PrismaClient();
             }
         });
 
-        const woopa7 = await prisma.explorer.upsert({
+        await prisma.explorer.upsert({
             where: { name: "Woopa7" },
             update: {},
             create: {
@@ -85,6 +85,40 @@ const prisma = new PrismaClient();
         });
 
         console.log("Create 8 explorers");
+    }catch(e){
+        console.error(e);
+        process.exit(1);
+    }finally{
+        await prisma.$disconnect();
+    }
+})();
+
+
+(async function main(){
+    try{
+        const mission1 = await prisma.mission.upsert({
+            where: { name: "Mission Node" },
+            update: {},
+            create: {
+                name: "Mission Node",
+                lang: "JavaScript",
+                missionCommander: "Carlo Gilmar",
+                enrollments: 3630,
+            }
+        });
+        
+        const mission2 = await prisma.mission.upsert({
+            where: { name: "Mission Java" },
+            update: {},
+            create: {
+                name: "Mission Java",
+                lang: "Java",
+                missionCommander: "Fernanda Ochoa",
+                enrollments: 3167,
+            }
+        });
+
+        console.log("Create 2 missions");
     }catch(e){
         console.error(e);
         process.exit(1);
