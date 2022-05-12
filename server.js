@@ -5,6 +5,15 @@ const prisma = new PrismaClient();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Cors
+const cors = require("cors");
+
+const corsOptions = {
+    origin: "http://localhost:8081",
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.get("/", (request, response) => {
