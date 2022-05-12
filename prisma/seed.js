@@ -130,7 +130,7 @@ const prisma = new PrismaClient();
 
 (async function main(){
     try{
-        await prisma.mission.upsert({
+        await prisma.missionCommander.upsert({
             where: { id: 1 },
             update: {
                 name: "Fernanda Ochoa",
@@ -140,12 +140,12 @@ const prisma = new PrismaClient();
             create: {
                 name: "Carlo Gilmar",
                 username: "CarloGil",
-                mainStack: "Java"
+                mainStack: "Node"
             }
         });
 
-        await prisma.mission.upsert({
-            where: { id: 1 },
+        await prisma.missionCommander.upsert({
+            where: { id: 2 },
             update: {
                 name: "Fernanda Ochoa",
                 username: "FerOchoa",
@@ -159,7 +159,7 @@ const prisma = new PrismaClient();
         });
         
 
-        console.log("Create 2 missions");
+        console.log("Create 2 missionCommanders");
     }catch(e){
         console.error(e);
         process.exit(1);
